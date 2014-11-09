@@ -1,0 +1,25 @@
+%h1 Listing games
+
+%table
+  %tr
+    %th Name
+    %th Dscr
+    %th Release date
+    %th Category
+    %th
+    %th
+    %th
+
+  - @games.each do |game|
+    %tr
+      %td= game.name
+      %td= game.dscr
+      %td= game.release_date
+      %td= game.category_id
+      %td= link_to 'Show', game
+      %td= link_to 'Edit', edit_game_path(game)
+      %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Game', new_game_path

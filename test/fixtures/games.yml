@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dscr: MyString
+  release_date: 2014-11-09
+  category_id: 1
+
+two:
+  name: MyString
+  dscr: MyString
+  release_date: 2014-11-09
+  category_id: 1
