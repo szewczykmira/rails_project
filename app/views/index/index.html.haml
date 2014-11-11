@@ -14,27 +14,13 @@
 .row
   .large-9.columns
     %article
-      %h3 Title
-      %h6 written by
-      .row
-        .large-6.columns
-          Smthing Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.</p>
-          Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim s
+      %h2 Categories
+      - @categories.each do |category|
+        %ul.pricing-table
+          %li.title=link_to(category.name, category)
+          -category.games.each do |game|
+            %li.bullet-item=link_to(game.name, game)
+
   %aside.large-3.columns
-    %h5 categories
-    %ul.side-nav
-      %li bla bla
     .panel
       %h5 featured
-      Pierdolenie sranie w bambus
-
-
-%footer.row
-  .large-12.columns
-    %hr
-    .row
-      .large-6.columns
-        %p Copyright no one at all. Go to town
-      .large-6.columns
-        %ul.inline-list.right
-          %li jeden

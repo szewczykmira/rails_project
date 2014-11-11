@@ -15,7 +15,7 @@
       %td= game.name
       %td= game.dscr
       %td= game.release_date
-      %td= game.category_id
+      %td= game.category.name
       %td= link_to 'Show', game
       %td= link_to 'Edit', edit_game_path(game)
       %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
