@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'foundation-rails'
 gem 'haml-rails'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
