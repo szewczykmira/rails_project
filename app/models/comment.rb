@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   validates :content, :owner_id, :game_id, presence: true
 
-  has_one :game
-  has_one :user
+  belongs_to :game
+  belongs_to :user
 end
