@@ -1,4 +1,32 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <%= link_to 'Gameweb', root_path %>
+      </h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="active">
+        <%= link_to 'Log in', new_user_session_path %>
+      </li>
+    </ul>
+  </section>
+</nav>
+
+
+<div class="row">
+  <div class="large-3 large-centered collumns">
+    <h2>
+      Edit <%= resource_name.to_s.humanize %>
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-3 small-centered collumns">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -28,7 +56,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: 'button' %>
   </div>
 <% end %>
 
@@ -37,3 +65,4 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div></div>

@@ -1,5 +1,33 @@
-<h2>Resend unlock instructions</h2>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <%= link_to 'Gameweb', root_path %>
+      </h1>
+    </li>
+  </ul>
 
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="active">
+        <%= link_to 'Log in', new_user_session_path %>
+      </li>
+    </ul>
+  </section>
+</nav>
+
+
+<div class="row">
+  <div class="large-9 large-centered collumns">
+    <h2>
+      Resend unlock instruction
+    </h2>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="small-3 small-centered collumns">
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -9,8 +37,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit "Resend unlock instructions", class:'button' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div></div>

@@ -1,5 +1,28 @@
-<p>Welcome <%= @email %>!</p>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <%= link_to 'Gameweb', root_path %>
+      </h1>
+    </li>
+  </ul>
+</nav>
 
-<p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<div class="row">
+  <div class="large-9 large-centered collumns">
+    <h2>
+      Welcome <%= @email %>!
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-3 small-centered collumns">
+
+    <p>You can confirm your account email through the link below:</p>
+
+    <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+  </div>
+</div>
