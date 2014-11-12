@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20141109223122) do
   end
 
   create_table "comments", force: true do |t|
-    t.date     "create_date"
     t.string   "content"
     t.integer  "owner_id"
     t.integer  "game_id"

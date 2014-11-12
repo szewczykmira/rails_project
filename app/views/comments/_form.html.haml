@@ -5,18 +5,18 @@
       %ul
         - @comment.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :create_date
-    = f.date_select :create_date
+  .row
+    .large-6.columns
+      .field
+        = f.label :game_id
+        = f.select(:game_id, options_from_collection_for_select(Game.all, :id, :name))
+    .large-3.columns
+      .field
+        = f.label :owner_id
+        = f.select(:owner_id, options_from_collection_for_select(User.all, :id, :name))
   .field
     = f.label :content
-    = f.text_field :content
-  .field
-    = f.label :owner_id
-    = f.number_field :owner_id
-  .field
-    = f.label :game_id
-    = f.number_field :game_id
+    = f.text_area :content, :rows=>7
+
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class:'button'

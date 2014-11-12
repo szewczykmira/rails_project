@@ -1,25 +1,38 @@
-%h1 Listing comments
-
-%table
-  %tr
-    %th Create date
-    %th Content
-    %th Owner
-    %th Game
-    %th
-    %th
-    %th
-
-  - @comments.each do |comment|
-    %tr
-      %td= comment.create_date
-      %td= comment.content
-      %td= comment.owner_id
-      %td= comment.game_id
-      %td= link_to 'Show', comment
-      %td= link_to 'Edit', edit_comment_path(comment)
-      %td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Comment', new_comment_path
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      -if current_user
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
+%p#notice= notice
+.row
+  .large-9.large-center.columns
+    %h2 All comments
+.row
+  .large-9.large-center.columns
+    %table
+      %thead
+        %tr
+          %td Create date
+          %td User
+          %td Game
+          %td
+          %td
+          %td
+      %tbody
+        - @comments.each do |comment|
+          %tr
+            %td =comment.create_date
+            %td =comment.user.name
+            %td =comment.game.name
+            %td=link_to 'Show', comment
+            %td=link_to 'Edit', edit_comment_path(comment)
+            %td=link_to 'Delete', comment, :method => :delete, :data => {:confirm => 'Are you sure?'}
+  %aside.large-3.columns
+    %p=link_to 'New', new_comment_path, class:'button'
