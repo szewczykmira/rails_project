@@ -11,6 +11,6 @@
     = f.text_field :name
   .field
     = f.label :dscr
-    = f.text_field :dscr
+    = f.text_area :dscr, :rows => 14
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'button'

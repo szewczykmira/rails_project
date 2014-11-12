@@ -17,7 +17,7 @@
 </nav>
 
 <div class="row">
-  <div class="small-9 small-centered collumns">
+  <div class="small-5 small-centered columns">
     <h2>
       Forgot your password?
     </h2>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="row">
-  <div class="small-3 small-centered collumns">
+  <div class="small-3 small-centered columns">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= devise_error_messages! %>
 

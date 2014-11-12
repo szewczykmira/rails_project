@@ -1,21 +1,27 @@
-%h1 Listing categories
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      -if current_user
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
+%p#notice= notice
 
-%table
-  %tr
-    %th Name
-    %th Dscr
-    %th
-    %th
-    %th
-
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td= category.dscr
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Category', new_category_path
+.row
+  .large-9.large-center.columns
+    %h2 All categories
+.row
+  .large-9.large-center.columns
+    %table
+      - @categories.each do |category|
+        %tr
+          %td=link_to category.name, category
+          %td=link_to 'Edit', edit_category_path(category)
+          %td=link_to 'Delete', category, :method => :delete, :data => {:confirm => 'Are you sure?'}
+  %aside.large-3.columns
+    %p=link_to 'New', new_category_path, class:'button'

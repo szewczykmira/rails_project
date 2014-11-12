@@ -18,7 +18,7 @@
 
 
 <div class="row">
-  <div class="large-3 large-centered collumns">
+  <div class="large-3 large-centered columns">
     <h2>
       Edit <%= resource_name.to_s.humanize %>
     </h2>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-  <div class="small-3 small-centered collumns">
+  <div class="small-3 small-centered columns">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>

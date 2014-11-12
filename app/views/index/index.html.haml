@@ -19,7 +19,7 @@
         %ul.pricing-table
           %li.title=link_to(category.name, category)
           -category.games.each do |game|
-            %li.bullet-item=link_to(game.name, game)
+            %li.bullet-item=link_to game.name, game
 
   %aside.large-3.columns
     .panel
