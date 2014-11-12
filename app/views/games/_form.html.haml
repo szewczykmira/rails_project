@@ -5,18 +5,20 @@
       %ul
         - @game.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :dscr
-    = f.text_field :dscr
-  .field
-    = f.label :release_date
-    = f.date_select :release_date
-  .field
-    = f.label :category_id
-    = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name))
+  .row
+    .large-6.columns
+      .field
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :dscr
+        = f.text_area :dscr, :rows=>14
+    .large-6.columns
+      .field
+        = f.label :release_date
+        = f.date_select :release_date
+      .field
+        = f.label :category_id
+        = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name))
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class:'button'

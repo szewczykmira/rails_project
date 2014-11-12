@@ -14,7 +14,7 @@
 
 .row
   .large-9.columns
-    %h4.right=link_to(@game.category.name, @game.category)
+    %h4.right=@game.category.name
     %h2=@game.name
     -if current_user
       =link_to 'Edit', edit_game_path(@game)

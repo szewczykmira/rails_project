@@ -1,7 +1,21 @@
-%h1 Editing game
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      %li=link_to @game.name, @game, class:'active'
+      -if current_user
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
+.row
+  .large-6.large-centered.columns
+    %h1 Editing game
 
-= render 'form'
+.row
+  .large-12.large-centered.columns
+    = render 'form'
 
-= link_to 'Show', @game
-\|
-= link_to 'Back', games_path

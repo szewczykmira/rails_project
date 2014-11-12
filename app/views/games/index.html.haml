@@ -1,25 +1,28 @@
-%h1 Listing games
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      -if current_user
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
+%p#notice= notice
 
-%table
-  %tr
-    %th Name
-    %th Dscr
-    %th Release date
-    %th Category
-    %th
-    %th
-    %th
+.row
+  .large-9.large-center.columns
+    %h2 All games
 
-  - @games.each do |game|
-    %tr
-      %td= game.name
-      %td= game.dscr
-      %td= game.release_date
-      %td= game.category.name
-      %td= link_to 'Show', game
-      %td= link_to 'Edit', edit_game_path(game)
-      %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Game', new_game_path
+.row
+  .large-9.large-center.columns
+    %table
+      - @games.each do |game|
+        %tr
+          %td=link_to game.name, game
+          %td=link_to 'Edit', edit_game_path(game)
+          %td=link_to 'Delete', game, :method => :delete, :data => {:confirm => 'Are you sure?'}
+  %aside.large-3.columns
+    %p=link_to 'New', new_game_path, class:'button'
