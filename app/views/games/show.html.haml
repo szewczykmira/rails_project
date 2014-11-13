@@ -18,6 +18,7 @@
 .row
   .large-9.columns
     %h2=@game.name
+    %a=link_to 'Add comment', new_comment_path, class:'button small'
     .row
       .large-2.columns
         Release date:
@@ -25,7 +26,15 @@
     %hr
       %p=@game.dscr
     %hr
-      Comments:
+      %h5 Comments:
+      - @game.comments.each do |comment|
+        .row
+          .large-3.columns
+            =comment.user.email
+            =comment.created_at
+          .large-8.columns
+            %p=comment.content
+          %hr
   %aside.large-3.columns
     %h5.label=link_to @game.category.name, @game.category
     -@game.category.games.each do |game|
