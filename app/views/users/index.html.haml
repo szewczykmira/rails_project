@@ -1,21 +1,30 @@
-%h1 Listing users
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      -if current_user
+        %li.active=link_to('Games', games_path)
+        %li.active=link_to('Comments', comments_path)
+        %li.active=link_to('Users', users_path)
+        %li.divider
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
+%p#notice= notice
 
-%table
-  %tr
-    %th Name
-    %th Age
-    %th
-    %th
-    %th
-
-  - @users.each do |user|
-    %tr
-      %td= user.name
-      %td= user.age
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New User', new_user_path
+.row
+  .large-9.large-center.columns
+    %h2 All users
+.row
+  .large-9.large-center.columns
+    %table
+      - @users.each do |user|
+        %tr
+          %td=link_to user.email, user
+          %td=user.created_at
+          %td=link_to 'Edit', edit_user_path(user)
+          %td=link_to 'Delete', user, :method => :delete, :data => {:confirm => 'Are you sure?'}
