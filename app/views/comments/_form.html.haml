@@ -10,10 +10,10 @@
       .field
         = f.label :game_id
         = f.select(:game_id, options_from_collection_for_select(Game.all, :id, :name))
-    .large-3.columns
+    .large-5.columns
       .field
-        = f.label :owner_id
-        = f.select(:owner_id, options_from_collection_for_select(User.all, :id, :name))
+        = f.label :user_id
+        = f.select(:user_id, options_from_collection_for_select(User.all, :id, :email))
   .field
     = f.label :content
     = f.text_area :content, :rows=>7

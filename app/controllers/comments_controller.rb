@@ -42,6 +42,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:create_date, :content, :owner_id, :game_id)
+      params.require(:comment).permit(:create_date, :content, :user_id, :game_id)
     end
 end
