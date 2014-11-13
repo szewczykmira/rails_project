@@ -4,8 +4,10 @@
       %h1=link_to('Gameweb', root_path)
   %section.top-bar-section
     %ul.right
-      %li=link_to @game.name, @game, class:'active'
+      %li=link_to @game.name, @game
+      %li.divider
       -if current_user
+        %li.active=link_to 'Admin', categories_path
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else

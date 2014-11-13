@@ -5,6 +5,9 @@
   %section.top-bar-section
     %ul.right
       -if current_user
+        %li.active=link_to('Admin', categories_path)
+        %li.divider
+        %li.active=link_to('Edit game', edit_game_path(@game))
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else
@@ -14,10 +17,7 @@
 
 .row
   .large-9.columns
-    %h4.right=@game.category.name
     %h2=@game.name
-    -if current_user
-      =link_to 'Edit', edit_game_path(@game)
     .row
       .large-2.columns
         Release date:
@@ -27,6 +27,6 @@
     %hr
       Comments:
   %aside.large-3.columns
-    %h5 Games
+    %h5.label=link_to @game.category.name, @game.category
     -@game.category.games.each do |game|
       %h6=link_to(game.name, game)
