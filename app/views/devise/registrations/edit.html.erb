@@ -10,7 +10,7 @@
   <section class="top-bar-section">
     <ul class="right">
       <li class="active">
-        <%= link_to 'Log in', new_user_session_path %>
+        <%= link_to 'Log out', destroy_user_session_path, :method => :delete%>
       </li>
     </ul>
   </section>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-  <div class="small-3 small-centered columns">
+  <div class="large-4 large-centered columns">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -60,9 +60,12 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+  <div class="large-4 large-centered columns">
+    <h3>Cancel my account</h3>
 
-<%= link_to "Back", :back %>
-</div></div>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'button' %></p>
+
+  </div>
+</div>

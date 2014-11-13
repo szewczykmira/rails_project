@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20141109223122) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.string   "dscr"
+    t.text   "dscr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
-    t.string   "content"
+    t.text   "content"
     t.integer  "owner_id"
     t.integer  "game_id"
     t.datetime "created_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141109223122) do
 
   create_table "games", force: true do |t|
     t.string   "name"
-    t.string   "dscr"
+    t.text   "dscr"
     t.date     "release_date"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 20141109223122) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

@@ -5,6 +5,9 @@
   %section.top-bar-section
     %ul.right
       -if current_user
+        %li.active=link_to('Admin', categories_path)
+        %li.divider
+        %li.active=link_to('Edit category', edit_comment_path(@category))
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else
@@ -15,8 +18,6 @@
 .row
   .large-9.columns
     %h2=@category.name
-    -if current_user
-      =link_to 'Edit', edit_category_path(@category)
     %hr
       %p=@category.dscr
   %aside.large-3.columns
