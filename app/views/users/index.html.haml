@@ -4,11 +4,12 @@
       %h1=link_to('Gameweb', root_path)
   %section.top-bar-section
     %ul.right
-      -if current_user
+      -if current_user.admin?
         %li.active=link_to('Games', games_path)
         %li.active=link_to('Comments', comments_path)
         %li.active=link_to('Users', users_path)
         %li.divider
+      - if current_user
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else
@@ -21,11 +22,12 @@
     %h2 All users
 .row
   .large-9.large-center.columns
-    %table
-      - @users.each do |user|
-        %tr
-          %td=user.admin?
-          %td=link_to user.email, user
-          %td=user.created_at
-          %td=link_to 'Edit', edit_user_path(user)
-          %td=link_to 'Delete', user, :method => :delete, :data => {:confirm => 'Are you sure?'}
+    - if current_user.admin?
+      %table
+        - @users.each do |user|
+          %tr
+            %td=user.admin?
+            %td=link_to user.email, user
+            %td=user.created_at
+            %td=link_to 'Edit', edit_user_path(user)
+            %td=link_to 'Delete', user, :method => :delete, :data => {:confirm => 'Are you sure?'}
