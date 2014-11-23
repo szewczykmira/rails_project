@@ -4,11 +4,12 @@
       %h1=link_to('Gameweb', root_path)
   %section.top-bar-section
     %ul.right
-      -if current_user
+      -if current_user.admin?
         %li.active=link_to('New comment', new_comment_path)
         %li.active=link_to('Admin', categories_path)
         %li.active=link_to('Games', games_path)
         %li.active=link_to('Users', users_path)
+      - if current_user
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else
@@ -20,21 +21,24 @@
     %h2 All comments
 .row
   .large-9.large-center.columns
-    %table
-      %thead
-        %tr
-          %td Create date
-          %td User
-          %td Game
-          %td
-          %td
-          %td
-      %tbody
-        - @comments.each do |comment|
+    - if current_user.admin?
+      %table
+        %thead
           %tr
-            %td=comment.created_at
-            %td=comment.user.email
-            %td=comment.game.name
-            %td=link_to 'Show', comment
-            %td=link_to 'Edit', edit_comment_path(comment)
-            %td=link_to 'Delete', comment, :method => :delete, :data => {:confirm => 'Are you sure?'}
+            %td Create date
+            %td User
+            %td Game
+            %td
+            %td
+            %td
+        %tbody
+          - @comments.each do |comment|
+            %tr
+              %td=comment.created_at
+              %td=comment.user.email
+              %td=comment.game.name
+              %td=link_to 'Show', comment
+              %td=link_to 'Edit', edit_comment_path(comment)
+              %td=link_to 'Delete', comment, :method => :delete, :data => {:confirm => 'Are you sure?'}
+    - else
+      %h4 You have no permission to be here!
