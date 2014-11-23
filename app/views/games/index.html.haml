@@ -4,11 +4,12 @@
       %h1=link_to('Gameweb', root_path)
   %section.top-bar-section
     %ul.right
-      -if current_user
+      -if current_user.admin?
         %li.active=link_to('New game', new_game_path)
         %li.active=link_to('Admin', categories_path)
         %li.active=link_to('Comments', comments_path)
         %li.active=link_to('Users', users_path)
+      - if current_user
         %li=link_to('Log out', destroy_user_session_path, :method => :delete)
         %li=link_to('Edit user', edit_user_registration_path)
       - else
@@ -22,9 +23,12 @@
 
 .row
   .large-9.large-center.columns
-    %table
-      - @games.each do |game|
-        %tr
-          %td=link_to game.name, game
-          %td=link_to 'Edit', edit_game_path(game)
-          %td=link_to 'Delete', game, :method => :delete, :data => {:confirm => 'Are you sure?'}
+    - if current_user.admin?
+      %table
+        - @games.each do |game|
+          %tr
+            %td=link_to game.name, game
+            %td=link_to 'Edit', edit_game_path(game)
+            %td=link_to 'Delete', game, :method => :delete, :data => {:confirm => 'Are you sure?'}
+    - else
+      %h4 You have no permission here
