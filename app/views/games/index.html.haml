@@ -9,12 +9,8 @@
         %li.active=link_to('Admin', categories_path)
         %li.active=link_to('Comments', comments_path)
         %li.active=link_to('Users', users_path)
-      - if current_user
-        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
-        %li=link_to('Edit user', edit_user_registration_path)
-      - else
-        %li=link_to('Log in', new_user_session_path)
-        %li=link_to('Sign up', new_user_registration_path)
+      %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+      %li=link_to('Edit user', edit_user_registration_path)
 %p#notice= notice
 
 .row
@@ -31,4 +27,4 @@
             %td=link_to 'Edit', edit_game_path(game)
             %td=link_to 'Delete', game, :method => :delete, :data => {:confirm => 'Are you sure?'}
     - else
-      %h4 You have no permission here
+      %h4 You are not admin! :(
