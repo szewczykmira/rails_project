@@ -24,6 +24,7 @@
     %table
       - @users.each do |user|
         %tr
+          %td=user.admin?
           %td=link_to user.email, user
           %td=user.created_at
           %td=link_to 'Edit', edit_user_path(user)

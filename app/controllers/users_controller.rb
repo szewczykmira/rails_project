@@ -18,6 +18,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.admin?
+      @user.update_attribute :admin, false
+    else
+      @user.update_attribute :admin, true
+    end
   end
 
   def create

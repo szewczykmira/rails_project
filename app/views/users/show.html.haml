@@ -1,12 +1,20 @@
+.top-bar
+  %ul.title-area
+    %li.name
+      %h1=link_to('Gameweb', root_path)
+  %section.top-bar-section
+    %ul.right
+      -if current_user
+        %li.active=link_to('Admin', categories_path)
+        %li.divider
+        %li=link_to('Log out', destroy_user_session_path, :method => :delete)
+        %li=link_to('Edit user', edit_user_registration_path)
+      - else
+        %li=link_to('Log in', new_user_session_path)
+        %li=link_to('Sign up', new_user_registration_path)
 %p#notice= notice
 
-%p
-  %b Name:
-  = @user.name
-%p
-  %b Age:
-  = @user.age
-
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+.row
+  .large-9.columns
+    %p=@user.email
+    %p=@user.admin
