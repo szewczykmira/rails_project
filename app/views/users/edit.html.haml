@@ -15,4 +15,8 @@
         %li=link_to('Sign up', new_user_registration_path)
 .row
   .large-6.large-centered.columns
-    %h1=@user.admin?
+    %h1 Edit user
+
+.row
+  .large-6.large-centered.columns
+    = render 'form'

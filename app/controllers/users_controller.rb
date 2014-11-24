@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :make_admin, :make_user, :destroy]
 
   respond_to :html
 
@@ -19,11 +19,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user.admin?
-      @user.update_attribute :admin, false
-    else
-      @user.update_attribute :admin, true
-    end
   end
 
   def create
@@ -48,6 +43,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :age)
+      params.require(:user).permit(:email, :admin)
     end
 end
