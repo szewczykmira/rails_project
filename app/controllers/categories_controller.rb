@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @categories = Category.all
@@ -34,7 +34,6 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    respond_with(@category)
   end
 
   private

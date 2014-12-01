@@ -20,9 +20,9 @@
 .row
   .large-9.large-center.columns
     - if current_user.admin?
-      %table
+      %table{:id => "cats"}
         - @categories.each do |category|
           %tr
             %td=link_to category.name, category
             %td=link_to 'Edit', edit_category_path(category)
-            %td=link_to 'Delete', category, :method => :delete, :data => {:confirm => 'Are you sure?'}
+            %td=link_to 'Delete', category, remote: true, :method => :delete
