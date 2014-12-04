@@ -19,8 +19,6 @@
 .row
   .large-9.columns
     %h2=@game.name
-    - if current_user
-      %a=link_to 'Add comment', new_comment_path, class:'button small'
     .row
       .large-2.columns
         Release date:
@@ -28,6 +26,22 @@
     %hr
       %p=@game.dscr
     %hr
+      - if current_user
+        %h5 Add comment
+        = form_for Comment.new do |f|
+          .row
+            .large-6.columns
+              .field
+                = f.hidden_field :game_id, :value => @game.id
+            .large-5.columns
+              .field
+                = f.hidden_field :user_id, :value => current_user.id
+          .field
+            = f.label :content
+            = f.text_area :content, :rows=>7
+
+          .actions
+            = f.submit 'Save', class:'button'
       %h5 Comments:
       - @game.comments.each do |comment|
         .row
