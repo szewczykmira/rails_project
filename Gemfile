@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'foundation-rails'
 gem 'haml-rails'
 gem 'devise'
+gem 'virtus', '~> 1.0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use postgresql as the database for Active Record

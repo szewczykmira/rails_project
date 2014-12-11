@@ -22,9 +22,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
-    @game.save
-    respond_with(@game)
+    @game = GameForm.new(game_params)
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to new_game_path }
+      else
+        format.html { render new_game_path }
+      end
+    end
   end
 
   def update
