@@ -24,7 +24,7 @@ class GamesController < ApplicationController
   def create
     @game = GameForm.new(game_params)
     respond_to do |format|
-      if @game.save
+      if game_service.call(@game)
         format.html { redirect_to new_game_path }
       else
         format.html { render new_game_path }
@@ -49,5 +49,9 @@ class GamesController < ApplicationController
 
     def game_params
       params.require(:game).permit(:name, :dscr, :release_date, :category_id)
+    end
+
+    def game_service
+      @game_service ||= GameService.new
     end
 end
